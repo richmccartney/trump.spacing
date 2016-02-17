@@ -1,3 +1,11 @@
+////
+/// @author       Richard McCartney
+/// @link         https://github.com/richmccartney/trump.spacing
+/// @since        0.0.1
+////
+
+/// Spacing trumps
+
 $base-spacing-unit:               20px !default;
 
 @mixin spacing($spacing, $spacing-unit) {
