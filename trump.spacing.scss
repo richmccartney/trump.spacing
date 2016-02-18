@@ -12,10 +12,21 @@
 $base-spacing-unit:               20px !default;
 
 @mixin spacing($spacing, $spacing-unit) {
-  $directions:                    top right bottom left horizontal vertical none;
-  $sizes:                         (tiny: $spacing-unit/4, small: $spacing-unit/2, large: $spacing-unit*2, huge: $spacing-unit*4);
+  $directions:                    top right bottom left horizontal vertical;
+  $sizes:                         (tiny: $spacing-unit / 4, small: $spacing-unit / 2, large: $spacing-unit * 2, huge: $spacing-unit * 4);
   
   .u-#{$spacing} {
+    
+    &--none {
+      #{$spacing}: none !important;
+    }
+    
+    @each $size, $division in $sizes {
+      &--#{$size} {
+        #{$spacing}: $division !important;
+      }
+    }
+    
     @each $direction in $directions {
       &--#{$direction} {
         @if $direction == "horizontal" {
@@ -24,10 +35,8 @@ $base-spacing-unit:               20px !default;
         } @else if $direction == "vertical" {
           #{$spacing}-top: $spacing-unit !important;
           #{$spacing}-bottom: $spacing-unit !important;
-        } @else if $direction == "none" {
-          #{$spacing}: none !important;
         } @else {
-          #{$spacing}-#{$direction}: $spacing-unit !important;
+          #{$spcing}-#{$direction}: $spacing-unit !important;
         }
 
         @each $size, $division in $sizes {
